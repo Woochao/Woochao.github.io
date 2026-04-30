@@ -1,0 +1,10 @@
+body {font-family: 'Segoe UI', sans-serif; background:#fff5f8; padding:15px;}
+header {background:#ffe0eb; padding:15px; border-radius:14px; text-align:center;}
+.top-controls {margin:15px 0; display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+.calendar {background:white; padding:15px; border-radius:14px;}
+.calendar-header {display:flex; justify-content:space-between; align-items:center;}
+.calendar-grid {display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-top:10px;}
+.day {background:#f9f9f9; border-radius:10px; padding:8px; cursor:pointer;}
+.date {font-weight:bold; color:#e75480; margin-bottom:4px;}
+.shift {font-size:13px; margin:2px 0; padding:3px; border-radius:6px;}
+@media (max-width:768px) {.calendar-grid{grid-template-columns:repeat(2,1fr);} body{font-size:16px;}}
