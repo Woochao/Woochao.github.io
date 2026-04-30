@@ -1,0 +1,223 @@
+* { box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  background:#fff5f8;
+  padding:15px;
+  color:#222;
+}
+header {
+  background:linear-gradient(135deg, #ffe0eb, #fff5f8);
+  padding:18px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(231,84,128,.12);
+}
+header h1 { margin:0 0 8px; font-size:26px; }
+#weather { font-size:14px; color:#555; }
+.top-controls {
+  margin:15px 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+button, select, input[type="password"], input[type="file"] {
+  border:1px solid #e7b6c7;
+  border-radius:9px;
+  padding:8px 10px;
+  background:#fff;
+  font-size:14px;
+}
+button { cursor:pointer; font-weight:700; }
+.pdf-button {
+  background:#e75480;
+  color:white;
+  border-color:#e75480;
+}
+#totalHours { font-weight:700; color:#333; }
+.calendar {
+  background:white;
+  padding:18px;
+  border-radius:18px;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+}
+.calendar-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:2px solid #f0d6df;
+  padding-bottom:10px;
+  margin-bottom:10px;
+}
+.calendar-header h2 {
+  margin:0;
+  font-size:24px;
+  letter-spacing:-.3px;
+}
+.calendar-grid {
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
+  margin-top:10px;
+}
+.weekday {
+  text-align:center;
+  font-weight:800;
+  padding:9px 0;
+  color:#222;
+  background:#fafafa;
+  border-radius:8px;
+  border:1px solid #eee;
+}
+.holiday-text { color:#d93025; }
+.empty-day { min-height:104px; }
+.day {
+  background:#fbfbfb;
+  border-radius:12px;
+  padding:8px;
+  cursor:pointer;
+  min-height:104px;
+  border:1px solid #e8e8e8;
+  overflow:hidden;
+}
+.day.weekday-date .date { color:#111; }
+.day.holiday {
+  background:#fff7f7;
+  border-color:#f2c6c6;
+}
+.day.holiday .date, .day.holiday .holiday-name { color:#d93025; }
+.day.selected { border-color:#e75480; box-shadow:0 0 0 2px rgba(231,84,128,.15); }
+.date-row {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:4px;
+  margin-bottom:6px;
+  min-height:20px;
+}
+.date { font-weight:900; font-size:17px; }
+.holiday-name { font-size:11px; font-weight:800; text-align:right; line-height:1.15; }
+.shift {
+  font-size:13px;
+  margin:4px 0;
+  padding:5px 7px;
+  border-radius:8px;
+  display:flex;
+  justify-content:space-between;
+  gap:6px;
+  border:1px solid rgba(0,0,0,.06);
+}
+.shift-type { font-weight:900; }
+.shift-name { font-weight:700; }
+.no-shift { font-size:12px; color:#aaa; margin-top:8px; }
+
+.pdf-mode {
+  background:#fff !important;
+  padding:0 !important;
+}
+.pdf-mode header,
+.pdf-mode .top-controls {
+  display:none !important;
+}
+.pdf-mode .calendar {
+  box-shadow:none !important;
+  border-radius:0 !important;
+  padding:4mm !important;
+  width:277mm !important;
+  height:190mm !important;
+  overflow:hidden !important;
+}
+.pdf-mode .calendar::before {
+  content:'3교대 월간 근무 일정표';
+  display:block;
+  text-align:center;
+  font-size:16px;
+  font-weight:900;
+  margin-bottom:2mm;
+  color:#111;
+}
+.pdf-mode .calendar-header {
+  justify-content:center;
+  border-bottom:1.5px solid #222;
+  margin-bottom:2mm;
+  padding-bottom:1.5mm;
+}
+.pdf-mode .calendar-header button {
+  display:none !important;
+}
+.pdf-mode .calendar-header h2 {
+  font-size:14px;
+  font-weight:900;
+}
+.pdf-mode .calendar-grid {
+  gap:1.2mm;
+  margin-top:0 !important;
+  grid-auto-rows:minmax(0, 1fr);
+}
+.pdf-mode .weekday {
+  padding:1mm 0;
+  font-size:9px;
+  border:1px solid #bbb;
+  background:#f3f3f3;
+  border-radius:2px;
+  height:6mm;
+}
+.pdf-mode .empty-day {
+  min-height:24mm;
+  height:24mm;
+  border:1px solid #eee;
+  border-radius:2px;
+}
+.pdf-mode .day {
+  min-height:24mm;
+  height:24mm;
+  border-radius:2px;
+  padding:2px 3px;
+  background:#fff;
+  border:1px solid #bbb;
+  page-break-inside:avoid;
+  break-inside:avoid;
+}
+.pdf-mode .day.holiday {
+  background:#fffafa;
+  border-color:#d7a8a8;
+}
+.pdf-mode .date-row {
+  margin-bottom:1px;
+  min-height:12px;
+}
+.pdf-mode .date { font-size:9px; }
+.pdf-mode .holiday-name { font-size:6.5px; }
+.pdf-mode .shift {
+  font-size:7px;
+  line-height:1.05;
+  padding:1.5px 2px;
+  margin:1px 0;
+  border-radius:2px;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+.pdf-mode .no-shift { display:none; }
+
+@page {
+  size: A4 landscape;
+  margin: 4mm;
+}
+
+@media print {
+  html, body {
+    width: 297mm;
+    height: 210mm;
+    background:#fff;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+  }
+  header, .top-controls { display:none !important; }
+  .calendar { box-shadow:none; border-radius:0; }
+}
+@media (max-width:768px) {
+  .calendar-grid{grid-template-columns:repeat(2,1fr);}
+  .weekday,.empty-day{display:none;}
+  body{font-size:16px;}
+}
