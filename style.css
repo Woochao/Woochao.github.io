@@ -4,7 +4,18 @@ header {background:#ffe0eb; padding:15px; border-radius:14px; text-align:center;
 .calendar {background:white; padding:15px; border-radius:14px;}
 .calendar-header {display:flex; justify-content:space-between; align-items:center;}
 .calendar-grid {display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-top:10px;}
-.day {background:#f9f9f9; border-radius:10px; padding:8px; cursor:pointer;}
-.date {font-weight:bold; color:#e75480; margin-bottom:4px;}
-.shift {font-size:13px; margin:2px 0; padding:3px; border-radius:6px;}
-@media (max-width:768px) {.calendar-grid{grid-template-columns:repeat(2,1fr);} body{font-size:16px;}}
+.weekday {text-align:center; font-weight:700; padding:8px 0; color:#222;}
+.holiday-text {color:#d93025;}
+.empty-day {min-height:92px;}
+.day {background:#f9f9f9; border-radius:10px; padding:8px; cursor:pointer; min-height:92px; border:2px solid transparent;}
+.day.weekday-date .date {color:#111;}
+.day.holiday .date, .day.holiday .holiday-name {color:#d93025;}
+.day.selected {border-color:#e75480; box-shadow:0 0 0 2px rgba(231,84,128,.15);}
+.date-row {display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:5px;}
+.date {font-weight:bold; font-size:16px;}
+.holiday-name {font-size:11px; font-weight:700; text-align:right;}
+.shift {font-size:13px; margin:3px 0; padding:4px 6px; border-radius:6px; display:flex; justify-content:space-between; gap:6px;}
+.shift-type {font-weight:700;}
+.shift-name {font-weight:600;}
+.no-shift {font-size:12px; color:#aaa; margin-top:8px;}
+@media (max-width:768px) {.calendar-grid{grid-template-columns:repeat(2,1fr);} .weekday,.empty-day{display:none;} body{font-size:16px;}}
