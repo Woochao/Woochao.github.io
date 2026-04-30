@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>3교대 근무 일정</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <h1>🌸 고정 3교대 근무 일정 🌸</h1>
+  <div id="weather">서울 날씨 불러오는 중...</div>
+</header>
+
+<div class="top-controls">
+  <div id="adminBox">
+    <input type="password" id="adminPw" placeholder="관리자 비밀번호" />
+    <button onclick="checkAdmin()">관리자 확인</button>
+  </div>
+  <div id="excelBox" style="display:none;">
+    <input type="file" id="excelInput" accept=".xlsx,.xls" />
+  </div>
+
+  <select id="workerFilter" onchange="update()"></select>
+  <span id="totalHours"></span>
+
+  <button onclick="requestSwap()">🔄 근무 교체 요청</button>
+  <button onclick="exportPDF()">🖨 PDF</button>
+  <button onclick="shareKakao()">💬 카톡 공유</button>
+</div>
+
+<section class="calendar">
+  <div class="calendar-header">
+    <button onclick="prevMonth()">◀</button>
+    <h2 id="monthTitle"></h2>
+    <button onclick="nextMonth()">▶</button>
+  </div>
+  <div class="calendar-grid" id="calendar"></div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
