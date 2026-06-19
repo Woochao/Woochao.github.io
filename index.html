@@ -1,42 +1,346 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="mid">
 <head>
   <meta charset="UTF-8" />
-  <title>3교대 근무 일정</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>홍길동 — 자기소개</title>
+  <meta name="description" content="20년의 자금조달 전문성을 바탕으로, 재무·회계를 넘어 경영지원 전반을 아우르는 리더. 경영지원본부장 홍길동." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<header>
-  <h1>🌸 고정 3교대 근무 일정 🌸</h1>
-  <div id="weather">서울 날씨 불러오는 중...</div>
-</header>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
-<div class="top-controls">
-  <div id="adminBox">
-    <input type="password" id="adminPw" placeholder="관리자 비밀번호" />
-    <button onclick="checkAdmin()">관리자 확인</button>
-  </div>
-  <div id="excelBox" style="display:none;">
-    <input type="file" id="excelInput" accept=".xlsx,.xls" />
-  </div>
+  <!-- ===== Navigation ===== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a class="nav__brand" href="#top">홍길동</a>
+      <nav class="nav__links" aria-label="주요 메뉴">
+        <a href="#about">소개</a>
+        <a href="#journey">커리어</a>
+        <a href="#expertise">역량</a>
+        <a href="#career">경력</a>
+        <a href="#contact" class="nav__cta">연락하기</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu" hidden>
+      <a href="#about">소개</a>
+      <a href="#journey">커리어</a>
+      <a href="#expertise">역량</a>
+      <a href="#career">경력</a>
+      <a href="#contact">연락하기</a>
+    </div>
+  </header>
 
-  <select id="workerFilter" onchange="update()"></select>
-  <span id="totalHours"></span>
+  <main id="main">
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="top">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <p class="eyebrow reveal">경영지원본부장 · 재무 리더</p>
+        <h1 class="hero__title reveal">
+          숫자의 깊이를 아는<br />
+          <span class="hero__accent">재무·경영지원 리더</span>
+        </h1>
+        <p class="hero__lead reveal">
+          한 회사에서 20년간 자금조달을 책임지고, 매각이라는 변화를 지나
+          재무/회계팀장과 경영지원본부장으로 책임의 폭을 넓혀 왔습니다.
+        </p>
+        <div class="hero__actions reveal">
+          <a class="btn btn--primary" href="#contact">연락하기</a>
+          <a class="btn btn--ghost" href="#journey">커리어 보기 <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
 
-  <button class="pdf-button" onclick="exportPDF()">🖨 PDF 출력</button>
-</div>
+    <!-- ===== About ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">About</p>
+          <h2 class="section__title">깊이에서 넓이로</h2>
+        </div>
+        <div class="about__grid">
+          <figure class="about__media reveal">
+            <img
+              src="assets/about-analysis.jpg"
+              alt="재무 데이터와 차트를 분석하는 모습"
+              loading="lazy"
+              width="1300"
+              height="1600"
+            />
+          </figure>
+          <div class="prose reveal">
+            <p>
+              저는 한 회사에서 약 20년간 자금조달 업무를 전담하며 재무의 기초 체력을
+              쌓아온 재무 전문가입니다. 단순히 자금을 융통하는 일을 넘어, 회사의
+              자본구조와 현금흐름을 안정적으로 운영하는 것을 업의 본질로 삼아 왔습니다.
+            </p>
+            <p>
+              소속 회사가 매각되는 과정을 직접 겪으며 기업 인수·합병(M&amp;A)이라는 큰
+              변화를 현장에서 경험했습니다. 이후 인수기업으로 자리를 옮겨 재무/회계팀장으로
+              약 3년간 실무를 총괄했고, 현재는 경영지원본부장으로 약 2년째 재무를 넘어선
+              경영지원 전반을 책임지고 있습니다.
+            </p>
+            <p>
+              한 분야의 깊이에서 출발해 인접 영역으로, 그리고 경영지원 총괄로 책임의
+              폭을 넓혀온 것이 제 커리어의 가장 큰 자산이라고 생각합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="calendar">
-  <div class="calendar-header">
-    <button onclick="prevMonth()">◀</button>
-    <h2 id="monthTitle"></h2>
-    <button onclick="nextMonth()">▶</button>
-  </div>
-  <div class="calendar-grid" id="calendar"></div>
-</section>
+    <!-- ===== Stats ===== -->
+    <section class="section stats" id="stats">
+      <div class="container stats__grid">
+        <div class="stat reveal">
+          <span class="stat__num"><span class="stat__value" data-count="20">0</span><span class="stat__unit">년</span></span>
+          <span class="stat__label">자금조달 전문 경력</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__num"><span class="stat__value" data-count="3">0</span><span class="stat__unit">년</span></span>
+          <span class="stat__label">재무/회계팀장</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__num"><span class="stat__value" data-count="2">0</span><span class="stat__unit">년</span></span>
+          <span class="stat__label">경영지원본부장</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__num"><span class="stat__value" data-count="1">0</span><span class="stat__unit">건</span></span>
+          <span class="stat__label">M&amp;A 직접 경험</span>
+        </div>
+      </div>
+    </section>
 
-<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script src="script.js"></script>
+    <!-- ===== Journey ===== -->
+    <section class="section" id="journey">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Career Journey</p>
+          <h2 class="section__title">커리어 여정</h2>
+          <p class="section__sub">제 경력은 “깊이에서 넓이로” 확장되어 온 과정입니다.</p>
+        </div>
+        <ol class="journey">
+          <li class="journey__item reveal">
+            <span class="journey__step">01</span>
+            <div class="journey__body">
+              <h3>자금조달 전문가 <span class="journey__meta">약 20년</span></h3>
+              <p>
+                한 회사에 오래 머무르며 자금조달 업무를 깊이 있게 다뤘습니다. 장기간 한
+                분야를 책임지며 금융기관·자본시장과의 관계, 자금 운용의 원칙을 체득했습니다.
+              </p>
+            </div>
+          </li>
+          <li class="journey__item reveal">
+            <span class="journey__step">02</span>
+            <div class="journey__body">
+              <h3>회사 매각 (M&amp;A) 경험</h3>
+              <p>
+                소속 회사가 매각되는 전 과정을 현장에서 겪었습니다. 격변의 시기에 재무
+                실무를 흔들림 없이 유지하며, 변화 속에서도 핵심을 지키는 법을 배웠습니다.
+              </p>
+            </div>
+          </li>
+          <li class="journey__item reveal">
+            <span class="journey__step">03</span>
+            <div class="journey__body">
+              <h3>재무/회계팀장 <span class="journey__meta">약 3년</span></h3>
+              <p>
+                인수기업에서 재무와 회계 실무를 총괄했습니다. 자금조달에 머물던 시야를
+                결산·관리회계·내부통제 등 재무/회계 전반으로 넓혔습니다.
+              </p>
+            </div>
+          </li>
+          <li class="journey__item reveal">
+            <span class="journey__step">04</span>
+            <div class="journey__body">
+              <h3>경영지원본부장 <span class="journey__meta">약 2년 · 현재</span></h3>
+              <p>
+                재무를 넘어 경영지원 전반을 총괄하고 있습니다. 부문 간 조율과 의사결정
+                지원을 통해 회사가 안정적으로 돌아가도록 뒷받침하고 있습니다.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Expertise ===== -->
+    <section class="section" id="expertise">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Core Expertise</p>
+          <h2 class="section__title">핵심 역량</h2>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <p class="eyebrow card__eyebrow">Finance</p>
+            <h3 class="card__title">자금조달 · 자본구조</h3>
+            <p class="card__text">
+              약 20년간 축적한 자금조달 전문성. 금융기관 네트워크와 자금 운용 감각을
+              바탕으로 안정적인 유동성과 자본구조를 설계합니다.
+            </p>
+          </article>
+          <article class="card reveal">
+            <p class="eyebrow card__eyebrow">Accounting</p>
+            <h3 class="card__title">재무 · 회계 관리</h3>
+            <p class="card__text">
+              재무/회계팀장으로서 결산, 자금 관리, 내부통제 등 재무 전반을 운영한
+              실무 역량.
+            </p>
+          </article>
+          <article class="card reveal">
+            <p class="eyebrow card__eyebrow">Management</p>
+            <h3 class="card__title">경영지원 총괄</h3>
+            <p class="card__text">
+              재무를 넘어 경영지원 부문 전반을 아우르는 시야와 부서 간 조율 능력.
+            </p>
+          </article>
+          <article class="card reveal">
+            <p class="eyebrow card__eyebrow">M&amp;A</p>
+            <h3 class="card__title">M&amp;A · 조직 전환</h3>
+            <p class="card__text">
+              회사 매각과 인수기업으로의 전환을 직접 겪으며 체득한, 변화 관리와 조직
+              통합에 대한 실전 감각.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Values ===== -->
+    <section class="section values" id="values">
+      <div class="container section__grid">
+        <div class="section__head reveal">
+          <p class="eyebrow">How I Work</p>
+          <h2 class="section__title">일하는 방식</h2>
+        </div>
+        <div class="reveal">
+          <dl class="value-list">
+            <div class="value">
+              <dt>원칙을 지키되 변화에 유연하게</dt>
+              <dd>재무의 기본 원칙은 흔들림 없이 지키되, 조직의 변화 앞에서는 유연하게 대응합니다.</dd>
+            </div>
+            <div class="value">
+              <dt>숫자 뒤의 맥락을 본다</dt>
+              <dd>숫자 자체보다 그 숫자가 만들어진 배경과 의미를 읽으려 합니다.</dd>
+            </div>
+            <div class="value">
+              <dt>신뢰를 기반으로</dt>
+              <dd>오랜 자금조달 경험에서 배운 것은, 결국 모든 일은 신뢰 위에서 이뤄진다는 점입니다.</dd>
+            </div>
+            <div class="value">
+              <dt>전체를 받치는 역할</dt>
+              <dd>경영지원은 드러나기보다 조직 전체를 받치는 일이라고 생각하며, 그 책임을 무겁게 받아들입니다.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Highlight band ===== -->
+    <section class="band" aria-label="전문성 하이라이트">
+      <div class="band__media" aria-hidden="true">
+        <img
+          src="assets/band-data.jpg"
+          alt=""
+          loading="lazy"
+          width="2400"
+          height="1600"
+        />
+      </div>
+      <div class="container band__inner reveal">
+        <p class="eyebrow">Trust as an asset</p>
+        <p class="band__quote">
+          숫자는 결과일 뿐, 그 뒤의 맥락과 신뢰가 진짜 자산이라 믿습니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Career table ===== -->
+    <section class="section" id="career">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Experience</p>
+          <h2 class="section__title">경력 요약</h2>
+          <p class="section__sub">정확한 회사명과 재직 기간을 채워 넣으세요.</p>
+        </div>
+        <div class="timeline reveal">
+          <div class="trow">
+            <div class="trow__period">[기간]</div>
+            <div class="trow__main">
+              <h3 class="trow__role">자금조달 담당</h3>
+              <p class="trow__org">[회사명 / 매각 전 회사]</p>
+              <p class="trow__desc">약 20년간 자금조달 업무 전담</p>
+            </div>
+          </div>
+          <div class="trow">
+            <div class="trow__period">[기간]</div>
+            <div class="trow__main">
+              <h3 class="trow__role">재무/회계팀장</h3>
+              <p class="trow__org">[인수기업명]</p>
+              <p class="trow__desc">약 3년, 재무·회계 실무 총괄</p>
+            </div>
+          </div>
+          <div class="trow">
+            <div class="trow__period">[기간] ~ 현재</div>
+            <div class="trow__main">
+              <h3 class="trow__role">경영지원본부장</h3>
+              <p class="trow__org">[인수기업명]</p>
+              <p class="trow__desc">약 2년, 경영지원 전반 총괄</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="achievements reveal">
+          <h3 class="achievements__title">대표 성과 <span>(수치로 채우면 설득력이 높아집니다)</span></h3>
+          <ul class="achievements__list">
+            <li><strong>자금조달 규모</strong> [누적/연간 조달 금액, 예: 연 OOO억 원]</li>
+            <li><strong>조달 비용 절감</strong> [금리 인하 폭 또는 절감액]</li>
+            <li><strong>M&amp;A 기여</strong> [실사 대응, 재무 자료 정비 등 구체 역할]</li>
+            <li><strong>재무/회계 개선</strong> [결산 기간 단축, 내부통제 정비 등]</li>
+            <li><strong>경영지원 성과</strong> [비용 절감, 프로세스 개선, 조직 운영 효율화 등]</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA / Contact ===== -->
+    <section class="section cta" id="contact">
+      <div class="container cta__inner reveal">
+        <p class="eyebrow">Get in touch</p>
+        <h2 class="cta__title">함께 이야기 나누고 싶습니다</h2>
+        <p class="cta__lead">
+          조직이 안정적으로 성장하도록 돕는 든든한 동반자가 되고자 합니다.
+          편하게 연락 주세요.
+        </p>
+        <ul class="contact-list">
+          <li><span class="contact-list__k">이메일</span><a href="mailto:[이메일 주소]">[이메일 주소]</a></li>
+          <li><span class="contact-list__k">연락처</span><a href="tel:[전화번호]">[전화번호]</a></li>
+          <li><span class="contact-list__k">LinkedIn</span><a href="[링크]">[링크]</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year"></span> 홍길동</span>
+      <span class="footer__note">재무 · 경영지원 리더</span>
+      <span class="footer__credit">사진: <a href="https://unsplash.com/" rel="noopener" target="_blank">Unsplash</a></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
